@@ -1,0 +1,9 @@
+export { Navbar } from "./Navbar";
+export { Hero } from "./Hero";
+export { Experience } from "./Experience";
+export { Projects } from "./Project";
+export { Section } from "./Section";
+export { Technologies } from "./Technologies";
+export { GitHubHeatmap } from "./GitHubHeatmap";
+export { Contact } from "./Contact";
+export { Footer } from "./Footer";
