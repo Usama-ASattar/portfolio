@@ -109,7 +109,7 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
               <button
                 type="button"
                 onClick={toggle}
-                className="rounded-full border px-3 pt-0.5 pb-1 sm:pt-1 text-sm transition hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                className="rounded-full border px-3 pt-0.5 pb-1 text-sm transition hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
                 aria-label="Toggle theme"
                 title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
               >
