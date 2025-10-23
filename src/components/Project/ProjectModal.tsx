@@ -53,7 +53,7 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
             <div className="min-w-0">
               <h3
                 id="project-modal-title"
-                className="text-xl md:text-2xl font-semibold tracking-tight"
+                className="text-xl md:text-2xl font-semibold tracking-tight text-neutral-600"
               >
                 {open.title}
               </h3>
@@ -62,7 +62,14 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="shrink-0 rounded-full border p-2 text-sm hover:bg-neutral-50"
+              className="
+    shrink-0 rounded-full border p-2 text-sm
+    text-neutral-700 hover:bg-neutral-100
+    dark:text-neutral-300 dark:hover:text-white
+    dark:bg-neutral-900 dark:hover:bg-neutral-600
+    border-neutral-300 dark:border-neutral-700
+    transition-colors
+  "
               aria-label={t.close}
               title={t.close}
             >

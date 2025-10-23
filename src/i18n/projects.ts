@@ -60,7 +60,7 @@ export const projectItems: Record<LangKey, ProjectItem[]> = {
         "GitHub Calendar",
         "EmailJS",
       ],
-      github: "https://github.com/yourusername/portfolio",
+      github: "https://github.com/Usama-ASattar/portfolio",
       features: paragraphToArray(
         `The portfolio offers a responsive layout that adjusts seamlessly across mobile, tablet, and desktop screens for a consistent user experience. It includes a dark/light theme toggle with preference persistence, allowing users to choose their preferred viewing mode. Built with multilingual support (English / Deutsch) through i18n integration, it caters to an international audience. Smooth section transitions and subtle animations enhance the visual experience without compromising performance. The site is also SEO-optimized, including meta and Open Graph tags for better discoverability on search engines and social platforms. Additional highlights include modular reusable components, lazy loading, and accessibility compliance, ensuring both performance and inclusivity.`
       ),
@@ -143,7 +143,7 @@ export const projectItems: Record<LangKey, ProjectItem[]> = {
         "GitHub Calendar",
         "EmailJS",
       ],
-      github: "https://github.com/yourusername/portfolio",
+      github: "https://github.com/Usama-ASattar/portfolio",
       features: paragraphToArray(
         `Das Portfolio bietet ein responsives Layout, das sich nahtlos an mobile, Tablet- und Desktop-Ansichten anpasst und ein konsistentes Nutzererlebnis gewährleistet. Es enthält einen Dunkel-/Hellmodus mit Speicherung der bevorzugten Einstellung. Durch die Integration von Mehrsprachigkeit (Englisch / Deutsch) über i18n richtet es sich an ein internationales Publikum. Sanfte Übergänge und dezente Animationen verbessern die Benutzererfahrung, ohne die Performance zu beeinträchtigen. Die Seite ist SEO-optimiert und verwendet Meta- sowie Open-Graph-Tags für bessere Sichtbarkeit in Suchmaschinen und sozialen Medien. Weitere Highlights sind modulare, wiederverwendbare Komponenten, Lazy Loading und Einhaltung von Barrierefreiheitsstandards, wodurch Leistung und Zugänglichkeit gleichermaßen gewährleistet sind.`
       ),

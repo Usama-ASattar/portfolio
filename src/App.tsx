@@ -17,7 +17,7 @@ export default function App() {
   const { t, lang, setLang } = useLocalized("en");
 
   const sectionIds = ["home", "experience", "projects", "tech", "contact"];
-  const currentHash = useScrollSpy(sectionIds, 120);
+  const currentHash = useScrollSpy(sectionIds, 80);
 
   useEffect(() => {
     if (!currentHash) return;

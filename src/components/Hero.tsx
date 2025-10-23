@@ -63,10 +63,11 @@ export function Hero({ t }: HeroProps) {
               {t.heroCtaPrimary}
             </a>
 
-            {/* Download CV */}
+            {/* Open CV */}
             <a
               href="/cv.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 "inline-flex items-center rounded-xl border px-5 py-2 text-sm font-medium transition transform hover:scale-105",
                 "hover:shadow-lg hover:bg-accent"
