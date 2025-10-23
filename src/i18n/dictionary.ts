@@ -12,7 +12,7 @@ export const DICTIONARY: Record<LangKey, UIStrings> = {
     heroTypewriter: [
       "Full Stack Developer",
       "Frontend Developer",
-      "Tech Enthusiastic",
+      "Tech Enthusiast",
     ],
     heroSubtitle:
       "Building scalable, user-first web applications through a full-stack approach. Blending React, Node.js, and DevOps to deliver efficient, user-centered products.",
