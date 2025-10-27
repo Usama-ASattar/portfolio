@@ -10,6 +10,7 @@ export const DICTIONARY: Record<LangKey, UIStrings> = {
 
     heroTitle: "Hi, I’m Usama.",
     heroTypewriter: [
+      "Software Engineer",
       "Full Stack Developer",
       "Frontend Developer",
       "Tech Enthusiast",
@@ -54,6 +55,7 @@ export const DICTIONARY: Record<LangKey, UIStrings> = {
 
     heroTitle: "Hi, ich bin Usama.",
     heroTypewriter: [
+      "Softwareentwickler",
       "Full-Stack-Entwickler",
       "Frontend-Entwickler",
       "Technologiebegeistert",
