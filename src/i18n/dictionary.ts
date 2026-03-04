@@ -12,7 +12,7 @@ export const DICTIONARY: Record<LangKey, UIStrings> = {
     heroTypewriter: [
       "Software Engineer",
       "Full Stack Developer",
-      "Frontend Developer",
+      "Frontend Engineer",
       "Tech Enthusiast",
     ],
     heroSubtitle:
