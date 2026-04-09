@@ -12,25 +12,22 @@ export function ExperienceCard({
   viewDetailsLabel,
 }: CardProps) {
   return (
-    <article className="rounded-2xl border bg-background p-6 shadow-sm transition hover:shadow-md">
-      {/* period on mobile */}
-      <div className="md:hidden mb-2">
-        <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
-          {it.period}
-        </span>
+    <article className="experience-card">
+      <div className="experience-card__period-wrap">
+        <span className="experience-card__period">{it.period}</span>
       </div>
 
-      <header className="mb-3">
-        <h3 className="text-lg font-semibold leading-tight">{it.role}</h3>
-        <div className="flex flex-wrap items-center gap-2 text-sm opacity-70">
+      <header className="experience-card__header">
+        <h3 className="experience-card__role">{it.role}</h3>
+        <div className="experience-card__company-row">
           <span>{it.company}</span>
         </div>
       </header>
 
       {!!it.points?.length && (
-        <ul className="ml-4 list-disc space-y-2 marker:text-primary">
+        <ul className="experience-card__points">
           {it.points.map((p, i) => (
-            <li key={i} className="text-sm leading-relaxed">
+            <li key={i} className="experience-card__point">
               {p}
             </li>
           ))}
@@ -38,12 +35,9 @@ export function ExperienceCard({
       )}
 
       {!!it.tech?.length && (
-        <ul className="mt-4 flex flex-wrap gap-2">
+        <ul className="experience-card__tech-list">
           {it.tech.map((tag) => (
-            <li
-              key={tag}
-              className="rounded-full border px-3 py-1 text-xs text-muted-foreground"
-            >
+            <li key={tag} className="experience-card__tech">
               {tag}
             </li>
           ))}
@@ -51,14 +45,14 @@ export function ExperienceCard({
       )}
 
       {!!it.links?.length && (
-        <div className="mt-4 flex flex-wrap gap-3">
+        <div className="experience-card__links">
           {it.links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border px-3 py-1 text-sm hover:bg-accent"
+              className="experience-card__link"
             >
               {l.label}
             </a>
@@ -67,23 +61,17 @@ export function ExperienceCard({
       )}
 
       {it.details && (
-        <div className="mt-6">
+        <div className="experience-card__details-wrap">
           <button
             type="button"
             onClick={onOpen}
-            className="
-          group absolute bottom-4 right-5 inline-flex items-center gap-1.5
-          text-sm font-medium text-foreground/80
-          underline-offset-4 transition
-          hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
-          active:translate-y-px
-        "
+            className="experience-card__details-btn"
             aria-label={viewDetailsLabel}
             title={viewDetailsLabel}
           >
             {viewDetailsLabel}
             <svg
-              className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+              className="experience-card__details-icon"
               viewBox="0 0 20 20"
               fill="currentColor"
               aria-hidden="true"

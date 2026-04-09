@@ -6,7 +6,6 @@ type ProjectCardProps = {
   onOpen: (p: ProjectItem) => void;
 };
 
-// GitHub icon
 function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
@@ -18,7 +17,6 @@ function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-// External link icon
 function ExternalLinkIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
@@ -32,47 +30,39 @@ function ExternalLinkIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export function ProjectCard({ p, t, onOpen }: ProjectCardProps) {
   return (
-    <article className="relative rounded-xl border bg-background shadow-sm transition hover:shadow-md hover:-translate-y-0.5 overflow-hidden">
-      {/* Project image */}
+    <article className="project-card">
       {p.image && (
         <img
           src={p.image}
           alt={p.imageAlt || p.title}
-          className="w-full aspect-video object-cover"
+          className="project-card__media"
           loading="lazy"
         />
       )}
 
-      <div className="p-4 space-y-2 pb-12">
-        {/* Title */}
-        <h3 className="text-base font-semibold leading-tight">{p.title}</h3>
+      <div className="project-card__body">
+        <h3 className="project-card__title">{p.title}</h3>
 
-        {/* Short description */}
-        <p className="text-sm text-muted-foreground line-clamp-2">{p.blurb}</p>
+        <p className="project-card__blurb">{p.blurb}</p>
 
-        {/* Skills / Tech tags */}
-        <ul className="flex flex-wrap gap-2 pt-1">
+        <ul className="project-card__tags">
           {p.tech.slice(0, 6).map((tag) => (
-            <li
-              key={tag}
-              className="rounded-full border border-gray-300 dark:border-gray-600 px-3 py-1 text-xs text-foreground/80 hover:bg-accent transition-colors"
-            >
+            <li key={tag} className="project-card__tag">
               {tag}
             </li>
           ))}
         </ul>
 
-        {/* Action buttons */}
-        <div className="flex items-center gap-3 pt-3">
+        <div className="project-card__actions">
           {p.github && (
             <a
               href={p.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md bg-[#24292f] text-white px-3 py-1.5 text-xs font-medium hover:opacity-90 transition"
+              className="project-card__btn-github"
               title={t.github}
             >
-              <GitHubIcon className="h-4 w-4" />
+              <GitHubIcon className="icon-inline" />
               GitHub
             </a>
           )}
@@ -81,33 +71,26 @@ export function ProjectCard({ p, t, onOpen }: ProjectCardProps) {
               href={p.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md bg-blue-600 text-white px-3 py-1.5 text-xs font-medium hover:bg-blue-700 transition"
+              className="project-card__btn-demo"
               title={t.live}
             >
-              <ExternalLinkIcon className="h-4 w-4" />
+              <ExternalLinkIcon className="icon-inline" />
               {t.liveDemo}
             </a>
           )}
         </div>
       </div>
 
-      {/* Bottom-right interactive “View details” */}
       <button
         type="button"
         onClick={() => onOpen(p)}
-        className="
-          group absolute bottom-4 right-5 inline-flex items-center gap-1.5
-          text-sm font-medium text-foreground/80
-          underline-offset-4 transition
-          hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
-          active:translate-y-px
-        "
+        className="project-card__details-btn"
         aria-label={t.viewDetails}
         title={t.viewDetails}
       >
         {t.viewDetails}
         <svg
-          className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+          className="project-card__details-icon"
           viewBox="0 0 20 20"
           fill="currentColor"
           aria-hidden="true"

@@ -1,6 +1,6 @@
 import { Section } from "./index";
 import type { UIStrings } from "../types";
-import type { IconType } from "react-icons"; // <- for typing icons
+import type { IconType } from "react-icons";
 import {
   SiHtml5,
   SiCss3,
@@ -28,70 +28,67 @@ import {
   SiMysql,
 } from "react-icons/si";
 import { LuPackage } from "react-icons/lu";
+import { cn } from "../utils/classNames";
+
+type TechIconToken =
+  | "html"
+  | "css"
+  | "javascript"
+  | "typescript"
+  | "react"
+  | "next"
+  | "tailwind"
+  | "mui"
+  | "shadcn"
+  | "storybook"
+  | "framer"
+  | "three"
+  | "redux"
+  | "node"
+  | "express"
+  | "mongo"
+  | "sql"
+  | "docker"
+  | "vercel"
+  | "git"
+  | "github"
+  | "jira"
+  | "postman"
+  | "rtl"
+  | "npm";
 
 type TechItem = {
   name: string;
-  Icon: IconType; // store the component, not an element
-  className: string; // full class string incl. dark variants
+  Icon: IconType;
+  icon: TechIconToken;
 };
 
 const techStack: TechItem[] = [
-  { name: "HTML", Icon: SiHtml5, className: "text-orange-500" },
-  { name: "CSS", Icon: SiCss3, className: "text-blue-500" },
-  { name: "JavaScript", Icon: SiJavascript, className: "text-yellow-400" },
-  { name: "TypeScript", Icon: SiTypescript, className: "text-blue-400" },
-  { name: "ReactJS", Icon: SiReact, className: "text-cyan-400" },
-  // neutrals get explicit dark variants so they stay visible
-  {
-    name: "NextJS",
-    Icon: SiNextdotjs,
-    className: "text-gray-700 dark:text-gray-500",
-  },
-  { name: "Tailwind CSS", Icon: SiTailwindcss, className: "text-cyan-400" },
-  { name: "Material UI", Icon: LuPackage, className: "text-blue-400" },
-  {
-    name: "shadcn/ui",
-    Icon: SiShadcnui,
-    className: "text-gray-700 dark:text-gray-500",
-  },
-  { name: "Storybook", Icon: SiStorybook, className: "text-pink-500" },
-  { name: "Framer Motion", Icon: SiFramer, className: "text-pink-500" },
-  {
-    name: "Three.js",
-    Icon: SiThreedotjs,
-    className: "text-gray-700 dark:text-gray-500",
-  },
-  { name: "Redux", Icon: SiRedux, className: "text-purple-500" },
-
-  { name: "NodeJS", Icon: SiNodedotjs, className: "text-green-500" },
-  {
-    name: "ExpressJS",
-    Icon: SiExpress,
-    className: "text-gray-700 dark:text-gray-500",
-  },
-  { name: "MongoDB", Icon: SiMongodb, className: "text-green-500" },
-  { name: "SQL", Icon: SiMysql, className: "text-sky-500" },
-  { name: "Docker", Icon: SiDocker, className: "text-blue-400" },
-  {
-    name: "Vercel",
-    Icon: SiVercel,
-    className: "text-gray-700 dark:text-gray-500",
-  },
-
-  { name: "Git", Icon: SiGit, className: "text-orange-500" },
-  {
-    name: "GitHub",
-    Icon: SiGithub,
-    className: "text-gray-700 dark:text-gray-500",
-  },
-  { name: "Jira", Icon: SiJirasoftware, className: "text-blue-500" },
-  { name: "Postman", Icon: SiPostman, className: "text-orange-500" },
-  {
-    name: "React Testing Library",
-    Icon: SiTestinglibrary,
-    className: "text-red-500",
-  },
-  { name: "npm", Icon: SiNpm, className: "text-red-500" },
+  { name: "HTML", Icon: SiHtml5, icon: "html" },
+  { name: "CSS", Icon: SiCss3, icon: "css" },
+  { name: "JavaScript", Icon: SiJavascript, icon: "javascript" },
+  { name: "TypeScript", Icon: SiTypescript, icon: "typescript" },
+  { name: "ReactJS", Icon: SiReact, icon: "react" },
+  { name: "NextJS", Icon: SiNextdotjs, icon: "next" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, icon: "tailwind" },
+  { name: "Material UI", Icon: LuPackage, icon: "mui" },
+  { name: "shadcn/ui", Icon: SiShadcnui, icon: "shadcn" },
+  { name: "Storybook", Icon: SiStorybook, icon: "storybook" },
+  { name: "Framer Motion", Icon: SiFramer, icon: "framer" },
+  { name: "Three.js", Icon: SiThreedotjs, icon: "three" },
+  { name: "Redux", Icon: SiRedux, icon: "redux" },
+  { name: "NodeJS", Icon: SiNodedotjs, icon: "node" },
+  { name: "ExpressJS", Icon: SiExpress, icon: "express" },
+  { name: "MongoDB", Icon: SiMongodb, icon: "mongo" },
+  { name: "SQL", Icon: SiMysql, icon: "sql" },
+  { name: "Docker", Icon: SiDocker, icon: "docker" },
+  { name: "Vercel", Icon: SiVercel, icon: "vercel" },
+  { name: "Git", Icon: SiGit, icon: "git" },
+  { name: "GitHub", Icon: SiGithub, icon: "github" },
+  { name: "Jira", Icon: SiJirasoftware, icon: "jira" },
+  { name: "Postman", Icon: SiPostman, icon: "postman" },
+  { name: "React Testing Library", Icon: SiTestinglibrary, icon: "rtl" },
+  { name: "npm", Icon: SiNpm, icon: "npm" },
 ];
 
 type TechnologiesProps = { t: UIStrings };
@@ -99,22 +96,14 @@ type TechnologiesProps = { t: UIStrings };
 export function Technologies({ t }: TechnologiesProps) {
   return (
     <Section id="tech" title={t.techTitle} subtitle={t.techLead}>
-      <div className="flex flex-wrap justify-center gap-3 mt-6">
-        {techStack.map(({ name, Icon, className }) => (
-          <div
-            key={name}
-            className="
-              flex items-center gap-2
-              px-4 py-2 rounded-md text-sm font-medium
-              bg-neutral-900 text-white border border-neutral-800
-              hover:bg-neutral-800
-              dark:bg-neutral-100 dark:text-neutral-900 dark:border-neutral-300
-              dark:hover:bg-white
-              transition-colors
-            "
-          >
-            <Icon className={className} aria-hidden="true" />
-            <span>{name}</span>
+      <div className="technologies__list">
+        {techStack.map(({ name, Icon, icon }) => (
+          <div key={name} className="technologies__chip">
+            <Icon
+              className={cn("technologies__icon", `technologies__icon--${icon}`)}
+              aria-hidden="true"
+            />
+            <span className="technologies__chip-label">{name}</span>
           </div>
         ))}
       </div>

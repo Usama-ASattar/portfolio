@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="app-layout__navbar-wrap">
         <Navbar t={t} lang={lang} setLang={setLang} currentHash={currentHash} />
       </div>
 
@@ -43,7 +43,7 @@ export default function App() {
 
       <Technologies t={t} />
 
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="app-layout__page-container">
         <GitHubHeatmap username="Usama-ASattar" />
       </div>
 

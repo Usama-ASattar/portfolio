@@ -12,21 +12,14 @@ export function Experience({ t, items }: Props) {
 
   return (
     <Section id="experience" title={t.expTitle} subtitle={t.expLead}>
-      <div className="relative space-y-10 md:pl-[4.5rem]">
-        <div
-          className="hidden md:block absolute left-[3.8rem] top-0 bottom-0 w-px bg-border"
-          aria-hidden="true"
-        />
-
+      <div className="experience-timeline">
         {items.map((it, idx) => (
           <div
             key={`${it.company}-${it.role}-${idx}`}
-            className="relative grid md:grid-cols-[8rem_1fr] gap-4 md:gap-8"
+            className="experience-row"
           >
-            <div className="hidden md:flex items-center justify-end pr-3">
-              <span className="text-sm font-medium text-muted-foreground text-right leading-tight">
-                {it.period}
-              </span>
+            <div className="experience-date">
+              <span className="experience-date__text">{it.period}</span>
             </div>
 
             <ExperienceCard

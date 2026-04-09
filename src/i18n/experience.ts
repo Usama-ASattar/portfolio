@@ -10,7 +10,7 @@ export const experienceItems: Record<LangKey, ExperinceItem[]> = {
       period: "12/2022 - 01/2024",
       work_arrangement: "Working Student",
       mode: "Hybrid",
-      tech: ["React.js", "Python", "PostgreSQL", "Docker", "GitHub Actions"],
+      tech: ["React.js", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "GitHub Actions"],
       points: paragraphToArray(`
 Developed and maintained the university's internal Research Collaboration Platform.
 Delivered end-to-end features such as a communities interface and a reactions system backed by PostgreSQL.
@@ -22,7 +22,7 @@ Universität Siegen is a leading German public research university where I contr
 I worked on the university's Research Collaboration Platform, a web-based system that connects researchers, facilitates knowledge sharing, and streamlines collaboration workflows.
       `),
       details: paragraphToArray(`
-Developed and maintained full-stack features using React.js, Node.js, and PostgreSQL, ensuring performance and scalability across the platform.
+Developed and maintained full-stack features using React.js, Python (FastAPI), and PostgreSQL, ensuring performance and scalability across the platform.
 Delivered end-to-end functionalities, including a community interface and a dynamic reactions system, improving user engagement and social interaction.
 Enhanced accessibility and multilingual reach by implementing i18n (English / Deutsch), a theme toggle, and WCAG-compliant design improvements.
 Increased user engagement by 25% and satisfaction scores by 20% through interactive UI enhancements and inclusive design.
@@ -102,7 +102,7 @@ Participated in regular code reviews to maintain high development standards and 
       period: "12/2022 - 01/2024",
       work_arrangement: "Werkstudent",
       mode: "Hybrid",
-      tech: ["React.js", "Python", "PostgreSQL", "Docker", "GitHub Actions"],
+      tech: ["React.js", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "GitHub Actions"],
       points: paragraphToArray(`
 Entwicklung und Wartung der internen Forschungs-Kooperationsplattform der Universität.
 Bereitstellung von End-to-End-Funktionen wie einer Community-Oberfläche und einem Reaktionssystem auf Basis von PostgreSQL.
@@ -114,7 +114,7 @@ Die Universität Siegen ist eine führende deutsche Forschungsuniversität, an d
 Ich arbeitete an der webbasierten Forschungsplattform der Universität, die Forschende miteinander vernetzt, den Wissensaustausch erleichtert und kollaborative Arbeitsabläufe optimiert.
       `),
       details: paragraphToArray(`
-Entwicklung und Wartung von Full-Stack-Funktionen mit React.js, Node.js und PostgreSQL zur Sicherstellung von Leistung und Skalierbarkeit der Plattform.
+Entwicklung und Wartung von Full-Stack-Funktionen mit React.js, Python (FastAPI) und PostgreSQL zur Sicherstellung von Leistung und Skalierbarkeit der Plattform.
 Bereitstellung vollständiger Funktionen, einschließlich einer Community-Oberfläche und eines dynamischen Reaktionssystems zur Verbesserung der Nutzerbindung und Interaktion.
 Erweiterung der Barrierefreiheit und Mehrsprachigkeit durch Implementierung von i18n (Englisch / Deutsch), einem Dunkel-/Hellmodus und WCAG-konformem Design.
 Steigerung der Nutzerbindung um 25 % und der Zufriedenheit um 20 % durch interaktive UI-Verbesserungen und inklusives Design.

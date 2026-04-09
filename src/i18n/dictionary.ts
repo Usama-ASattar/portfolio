@@ -16,7 +16,7 @@ export const DICTIONARY: Record<LangKey, UIStrings> = {
       "Tech Enthusiast",
     ],
     heroSubtitle:
-      "Building scalable, user-first web applications through a full-stack approach. Blending React, Node.js, and DevOps to deliver efficient, user-centered products.",
+      "Building scalable, user-first web applications through a full-stack approach. Blending React, Python, and DevOps to deliver efficient, user-centered products.",
     heroCtaPrimary: "View Projects",
     heroCtaSecondary: "Resume/CV",
 
@@ -61,7 +61,7 @@ export const DICTIONARY: Record<LangKey, UIStrings> = {
       "Technologiebegeistert",
     ],
     heroSubtitle:
-      "Entwickle skalierbare, nutzerzentrierte Webanwendungen mit einem Full-Stack-Ansatz. Kombiniere React, Node.js und DevOps, um effiziente und benutzerfreundliche Produkte zu liefern.",
+      "Entwickle skalierbare, nutzerzentrierte Webanwendungen mit einem Full-Stack-Ansatz. Kombiniere React, Python, und DevOps, um effiziente und benutzerfreundliche Produkte zu liefern.",
 
     heroCtaPrimary: "Projekte ansehen",
     heroCtaSecondary: "Lebenslauf",

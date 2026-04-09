@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from "../hooks/useTheme";
 import { type LangKey, type UIStrings } from "../types";
+import { cn } from "../utils/classNames";
 
 type NavbarProps = {
   t: UIStrings;
@@ -23,7 +24,6 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
 
-  // Close language dropdown when clicking outside
   React.useEffect(() => {
     const handler = (e: MouseEvent) => {
       const el = e.target as HTMLElement;
@@ -33,14 +33,12 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
     return () => document.removeEventListener("click", handler);
   }, []);
 
-  // Close mobile menu on hash change
   React.useEffect(() => {
     const onHash = () => setMenuOpen(false);
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  // Strengthen shadow after tiny scroll
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4);
     onScroll();
@@ -50,39 +48,21 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
 
   return (
     <>
-      {/* Spacer so the fixed bar doesn't overlap content */}
-      <div className="h-16 sm:h-[3.5rem]" />
+      <div className="nav-spacer" />
 
-      {/* Fixed, centered capsule */}
-      <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2 w-full px-4">
-        <div className="mx-auto w-full max-w-[64rem]">
+      <div className="nav-fixed">
+        <div className="nav-inner">
           <div
-            className={[
-              // Make width stable at breakpoints (no w-fit!)
-              "mx-auto w-full xs:w-[360px] sm:w-[520px] md:w-[820px] lg:w-[960px]",
-              "px-4 sm:px-5 py-2 rounded-full border backdrop-blur",
-              // 3-column grid: brand | links (center) | controls
-              "grid grid-cols-[auto,1fr,auto] items-center gap-3",
-              // Light
-              "bg-white/90 text-neutral-900 border-neutral-200 ring-1 ring-black/5",
-              // Dark: higher opacity for visibility + subtle ring/shadow
-              "dark:bg-neutral-900/95 dark:text-neutral-100 dark:border-white/10 dark:ring-white/10",
-              // Shadow reacts to scroll
-              scrolled
-                ? "shadow-md dark:shadow-black/40"
-                : "shadow-sm dark:shadow-black/20",
-            ].join(" ")}
+            className={cn(
+              "nav-shell",
+              scrolled ? "nav-shell--raised" : "nav-shell--rest"
+            )}
           >
-            {/* Brand (left) */}
-            <a
-              href="#home"
-              className="text-base sm:text-lg font-semibold whitespace-nowrap md:hidden lg:hidden"
-            >
+            <a href="#home" className="nav-brand">
               Usama
             </a>
 
-            {/* Desktop links (center) */}
-            <ul className="hidden md:flex items-center justify-center gap-6 whitespace-nowrap">
+            <ul className="nav-links">
               {links.map((l) => {
                 const active = currentHash === l.href;
                 return (
@@ -90,11 +70,7 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                     <a
                       href={l.href}
                       aria-current={active ? "page" : undefined}
-                      className={`transition ${
-                        active
-                          ? "font-semibold text-primary"
-                          : "opacity-80 hover:opacity-100"
-                      }`}
+                      className={cn("nav-link", active && "nav-link--active")}
                     >
                       {t[l.key]}
                     </a>
@@ -103,25 +79,22 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
               })}
             </ul>
 
-            {/* Controls (right) */}
-            <div className="ml-auto flex items-center gap-2">
-              {/* Theme */}
+            <div className="nav-controls">
               <button
                 type="button"
                 onClick={toggle}
-                className="rounded-full border px-3 pt-0.5 pb-1 text-sm transition hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                className="nav-icon-btn"
                 aria-label="Toggle theme"
                 title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
               >
                 {theme === "dark" ? "🌙" : "☀️"}
               </button>
 
-              {/* Language */}
-              <div id="lang-dropdown" className="relative">
+              <div id="lang-dropdown" className="nav-dropdown">
                 <button
                   type="button"
                   onClick={() => setLangOpen((v) => !v)}
-                  className="flex items-center gap-1 rounded-full border px-3 py-1 text-sm transition hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                  className="nav-lang-btn"
                   aria-haspopup="listbox"
                   aria-expanded={langOpen}
                   title="Change language"
@@ -129,12 +102,14 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                   🌐 {lang === "en" ? "EN" : "DE"}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className={`ml-1 h-3 w-3 transition-transform ${
-                      langOpen ? "rotate-180" : ""
-                    }`}
+                    className={cn(
+                      "nav-lang-chevron",
+                      langOpen && "nav-lang-chevron--open"
+                    )}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden
                   >
                     <path
                       strokeLinecap="round"
@@ -146,19 +121,18 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                 </button>
 
                 {langOpen && (
-                  <ul
-                    className="absolute right-0 mt-1 w-36 rounded-md border bg-white text-neutral-900 shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100"
-                    role="listbox"
-                  >
+                  <ul className="nav-lang-menu" role="listbox">
                     <li>
                       <button
+                        type="button"
                         onClick={() => {
                           setLang("en");
                           setLangOpen(false);
                         }}
-                        className={`block w-full text-left px-3 py-1.5 text-sm transition hover:bg-neutral-100 dark:hover:bg-neutral-800 ${
-                          lang === "en" ? "font-semibold" : ""
-                        }`}
+                        className={cn(
+                          "nav-lang-item",
+                          lang === "en" && "nav-lang-item--active"
+                        )}
                         role="option"
                         aria-selected={lang === "en"}
                       >
@@ -167,13 +141,15 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                     </li>
                     <li>
                       <button
+                        type="button"
                         onClick={() => {
                           setLang("de");
                           setLangOpen(false);
                         }}
-                        className={`block w-full text-left px-3 py-1.5 text-sm transition hover:bg-neutral-100 dark:hover:bg-neutral-800 ${
-                          lang === "de" ? "font-semibold" : ""
-                        }`}
+                        className={cn(
+                          "nav-lang-item",
+                          lang === "de" && "nav-lang-item--active"
+                        )}
                         role="option"
                         aria-selected={lang === "de"}
                       >
@@ -184,17 +160,18 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                 )}
               </div>
 
-              {/* Mobile menu button (hidden on md+) */}
               <button
-                className="inline-flex items-center justify-center rounded-full p-2 md:hidden hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                type="button"
+                className="nav-menu-toggle"
                 aria-label="Open menu"
                 onClick={() => setMenuOpen((v) => !v)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="nav-menu-toggle__icon"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  aria-hidden
                 >
                   {menuOpen ? (
                     <path
@@ -210,20 +187,20 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
             </div>
           </div>
 
-          {/* Mobile floating panel under the capsule */}
           {menuOpen && (
-            <div className="relative">
-              <div className="absolute left-1/2 z-40 mt-2 w-[calc(100vw-2rem)] max-w-sm -translate-x-1/2 rounded-2xl border bg-white text-neutral-900 shadow-lg dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-100">
-                <ul className="flex flex-col gap-1 p-2">
+            <div className="nav-mobile-anchor">
+              <div className="nav-mobile-panel">
+                <ul className="nav-mobile-list">
                   {links.map((l) => {
                     const active = currentHash === l.href;
                     return (
                       <li key={l.href}>
                         <a
                           href={l.href}
-                          className={`block rounded-lg px-3 py-2 transition hover:bg-neutral-100 dark:hover:bg-neutral-800 ${
-                            active ? "font-semibold text-primary" : ""
-                          }`}
+                          className={cn(
+                            "nav-mobile-link",
+                            active && "nav-mobile-link--active"
+                          )}
                         >
                           {t[l.key]}
                         </a>

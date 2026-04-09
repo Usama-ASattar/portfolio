@@ -17,15 +17,13 @@ export function Section({
   subtitle,
 }: SectionProps) {
   return (
-    <section id={id} className={cn("py-10 md:py-16", className)}>
-      <div className="mx-auto max-w-6xl px-4">
+    <section id={id} className={cn("app-section", className)}>
+      <div className="app-section__inner">
         {title && (
-          <header className="mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-              {title}
-            </h2>
+          <header className="app-section__header">
+            <h2 className="app-section__title">{title}</h2>
             {subtitle && (
-              <p className="text-muted-foreground mt-2">{subtitle}</p>
+              <p className="app-section__subtitle">{subtitle}</p>
             )}
           </header>
         )}

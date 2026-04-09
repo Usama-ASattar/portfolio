@@ -1,5 +1,4 @@
 import { type UIStrings } from "../types";
-import { cn } from "../utils";
 import heroPhoto from "../assets/hero/hero-photo.jpg";
 import { Typewriter } from "react-simple-typewriter";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
@@ -8,33 +7,19 @@ type HeroProps = { t: UIStrings };
 
 export function Hero({ t }: HeroProps) {
   return (
-    <section id="home" className="relative md:py-10 py-8 md:py-16">
-      <div
-        className="
-          mx-auto max-w-6xl px-4 
-          flex flex-col md:grid md:grid-cols-2 md:items-center gap-10
-        "
-      >
-        {/* --- IMAGE --- */}
-        <div className="order-1 md:order-2 flex justify-center md:justify-end">
+    <section id="home" className="hero">
+      <div className="hero__layout">
+        <div className="hero__media-col">
           <img
             src={heroPhoto}
             alt="Developer portrait"
-            className="
-              w-48 h-48 sm:w-56 sm:h-56 md:w-[380px] md:h-[480px] lg:w-[420px] lg:h-[520px] 
-              rounded-full md:rounded-2xl
-              border border-border object-cover shadow-lg
-              transition-all duration-300
-            "
+            className="hero__img"
           />
         </div>
 
-        {/* --- TEXT --- */}
-        <div className="order-2 md:order-1 flex flex-col justify-center text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
-            {t.heroTitle}
-          </h1>
-          <p className="text-2xl md:text-4xl font-bold tracking-tight leading-tight">
+        <div className="hero__content">
+          <h1 className="hero__heading">{t.heroTitle}</h1>
+          <p className="hero__typewriter">
             <Typewriter
               words={t.heroTypewriter}
               loop
@@ -46,71 +31,47 @@ export function Hero({ t }: HeroProps) {
             />
           </p>
 
-          <p className="mt-4 text-lg md:pt-7 md:text-xl md:text-justify text-muted-foreground max-w-2xl mx-auto md:mx-0">
-            {t.heroSubtitle}
-          </p>
+          <p className="hero__lead">{t.heroSubtitle}</p>
 
-          {/* --- BUTTONS --- */}
-          <div className="mt-4 md:mt-8 flex flex-wrap justify-center md:justify-start gap-3">
-            {/* Primary CTA */}
-            <a
-              href="#projects"
-              className={cn(
-                "inline-flex items-center rounded-xl border px-5 py-2 text-sm font-medium transition transform hover:scale-105",
-                "hover:shadow-lg hover:bg-accent"
-              )}
-            >
+          <div className="hero__actions">
+            <a href="#projects" className="hero__cta">
               {t.heroCtaPrimary}
             </a>
-
-            {/* Open CV */}
             <a
               href="/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                "inline-flex items-center rounded-xl border px-5 py-2 text-sm font-medium transition transform hover:scale-105",
-                "hover:shadow-lg hover:bg-accent"
-              )}
+              className="hero__cta"
             >
               {t.heroCtaSecondary}
             </a>
           </div>
 
-          {/* --- SOCIAL BUTTONS ON NEXT LINE --- */}
-          <div className="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
+          <div className="hero__social-row">
             <a
               href="https://www.linkedin.com/in/usama-a-b75133105/"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                "inline-flex items-center justify-center rounded-full border p-3 text-white transition transform hover:scale-110 shadow-sm",
-                "bg-[#0077B5] hover:shadow-lg"
-              )}
+              className="hero__social hero__social--linkedin"
+              aria-label="LinkedIn"
             >
               <FaLinkedin size={20} />
             </a>
-
             <a
               href="https://github.com/Usama-ASattar"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                "inline-flex items-center justify-center rounded-full border p-3 text-white transition transform hover:scale-110 shadow-sm",
-                "bg-black hover:shadow-lg"
-              )}
+              className="hero__social hero__social--github"
+              aria-label="GitHub"
             >
               <FaGithub size={20} />
             </a>
-
             <a
               href="https://www.instagram.com/usa__as"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                "inline-flex items-center justify-center rounded-full border p-3 text-white transition transform hover:scale-110 shadow-sm",
-                "bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:shadow-lg"
-              )}
+              className="hero__social hero__social--instagram"
+              aria-label="Instagram"
             >
               <FaInstagram size={20} />
             </a>

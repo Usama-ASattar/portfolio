@@ -7,20 +7,16 @@ export function GitHubHeatmap({ username }: { username: string }) {
   };
 
   return (
-    <div className="rounded-xl border p-2  flex justify-center">
+    <div className="github-heatmap">
       <GitHubCalendar
         username={username}
-        // sizing
         blockSize={10}
         blockMargin={4}
         fontSize={12}
-        // colors
         colorScheme="light"
         theme={theme}
-        // UX
         hideColorLegend={false}
         hideMonthLabels={false}
-        // Week starts on Monday: 1, Sunday: 0
         weekStart={1}
       />
     </div>

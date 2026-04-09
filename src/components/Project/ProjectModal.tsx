@@ -29,32 +29,22 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/50 p-3 md:p-6 flex items-start justify-center"
+      className="modal-backdrop modal-backdrop--centered"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
       onClick={onClose}
     >
-      {/* modal shell */}
       <div
         ref={panelRef}
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
-        className="
-          w-full max-w-4xl 
-          rounded-3xl border bg-white shadow-2xl ring-1 ring-black/5
-          max-h-[90vh] grid grid-rows-[auto,1fr] focus:outline-none 
-          overflow-hidden
-        "
+        className="modal-panel modal-panel--project modal-panel-shell"
       >
-        {/* sticky header */}
-        <header className="sticky top-0 z-10 bg-white/95 backdrop-blur border-b rounded-t-3xl">
-          <div className="flex items-start justify-between gap-4 p-4 md:p-6">
-            <div className="min-w-0">
-              <h3
-                id="project-modal-title"
-                className="text-xl md:text-2xl font-semibold tracking-tight text-neutral-600"
-              >
+        <header className="modal-header modal-header--rounded">
+          <div className="modal-header__row">
+            <div className="modal-header__title-wrap">
+              <h3 id="project-modal-title" className="modal-title">
                 {open.title}
               </h3>
             </div>
@@ -62,14 +52,7 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="
-    shrink-0 rounded-full border p-2 text-sm
-    text-neutral-700 hover:bg-neutral-100
-    dark:text-neutral-300 dark:hover:text-white
-    dark:bg-neutral-900 dark:hover:bg-neutral-600
-    border-neutral-300 dark:border-neutral-700
-    transition-colors
-  "
+              className="modal-close"
               aria-label={t.close}
               title={t.close}
             >
@@ -78,27 +61,18 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
           </div>
         </header>
 
-        {/* scrollable body */}
-        <div className="overflow-y-auto p-4 md:p-8 rounded-b-3xl">
-          {/* details as bullets */}
+        <div className="modal-body modal-body--project">
           <>
-            <h4 className="text-sm font-bold text-neutral-700 mb-3">
-              Description
-            </h4>
-            <div className="max-w-4xl text-neutral-800 mb-6 text-justify">
-              {open.shortDescription}
-            </div>
+            <h4 className="modal-section-title">Description</h4>
+            <div className="modal-prose">{open.shortDescription}</div>
           </>
 
-          {/* Features section (new), visually consistent with other sections */}
           {!!open.features?.length && (
             <>
-              <hr className="my-6 md:my-8 border-neutral-200" />
-              <section className="max-w-4xl text-justify">
-                <h4 className="text-sm font-bold text-neutral-700 mb-3">
-                  Features
-                </h4>
-                <ul className="list-disc ml-5 space-y-2 text-[0.95rem] leading-7 text-neutral-800">
+              <hr className="modal-hr" />
+              <section className="modal-section-wide">
+                <h4 className="modal-section-title">Features</h4>
+                <ul className="modal-list">
                   {open.features.map((f, i) => (
                     <li key={i}>{f}</li>
                   ))}
@@ -107,33 +81,25 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
             </>
           )}
 
-          {/* compact screenshots */}
           {!!open.extraImages?.length && (
             <>
-              <hr className="my-6 md:my-8 border-neutral-200" />
-              <h4 className="text-sm font-bold text-neutral-700 mb-3">
-                Screenshots
-              </h4>
+              <hr className="modal-hr" />
+              <h4 className="modal-section-title">Screenshots</h4>
 
-              {/* Uniform gallery grid, preserves array order, no cropping */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="modal-gallery-grid">
                 {open.extraImages.map((src, i) => (
-                  <figure
-                    key={i}
-                    className="rounded-lg border bg-neutral-50 shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    {/* Fixed tile shape for a tidy gallery, image fits inside */}
+                  <figure key={i} className="modal-gallery-figure">
                     <a
                       href={src}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block"
+                      className="modal-gallery-link"
                     >
-                      <div className="relative w-full aspect-[4/3] p-2">
+                      <div className="modal-gallery-aspect">
                         <img
                           src={src}
                           alt={`Additional view ${i + 1}`}
-                          className="absolute inset-0 m-auto max-w-full max-h-full object-contain"
+                          className="modal-gallery-img"
                           loading="lazy"
                           decoding="async"
                         />
@@ -145,20 +111,14 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
             </>
           )}
 
-          {/* tech */}
           {!!open.tech?.length && (
             <>
-              <hr className="my-6 md:my-8 border-neutral-200" />
-              <section className="max-w-3xl">
-                <h4 className="text-sm font-bold text-neutral-700 mb-3">
-                  Tech
-                </h4>
-                <ul className="flex flex-wrap gap-2">
+              <hr className="modal-hr" />
+              <section className="modal-section-narrow">
+                <h4 className="modal-section-title">Tech</h4>
+                <ul className="modal-tech-list">
                   {open.tech.map((tItem) => (
-                    <li
-                      key={tItem}
-                      className="rounded-full border px-3 py-1 text-xs md:text-[0.8rem] text-neutral-700"
-                    >
+                    <li key={tItem} className="modal-tech-pill">
                       {tItem}
                     </li>
                   ))}
@@ -167,27 +127,24 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
             </>
           )}
 
-          {/* links, styled like ProjectCard buttons */}
           {(open.github || open.demo) && (
             <>
-              <hr className="my-6 md:my-8 border-neutral-200" />
-              <section className="max-w-3xl">
-                <h4 className="text-sm font-bold text-neutral-700 mb-3">
-                  Links
-                </h4>
-                <div className="flex flex-wrap gap-3">
+              <hr className="modal-hr" />
+              <section className="modal-section-narrow">
+                <h4 className="modal-section-title">Links</h4>
+                <div className="modal-links-row">
                   {open.github && (
                     <a
                       href={open.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-md bg-[#24292f] text-white px-3 py-1.5 text-xs font-medium hover:opacity-90 transition"
+                      className="modal-btn-github"
                       title="GitHub"
                     >
                       <svg
                         viewBox="0 0 24 24"
                         aria-hidden="true"
-                        className="h-4 w-4"
+                        className="icon-inline"
                       >
                         <path
                           fill="currentColor"
@@ -202,13 +159,13 @@ export function ProjectModal({ open, t, onClose }: ProjectModalProps) {
                       href={open.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-md bg-blue-600 text-white px-3 py-1.5 text-xs font-medium hover:bg-blue-700 transition"
+                      className="modal-btn-demo"
                       title="Live Demo"
                     >
                       <svg
                         viewBox="0 0 24 24"
                         aria-hidden="true"
-                        className="h-4 w-4"
+                        className="icon-inline"
                       >
                         <path
                           fill="currentColor"
