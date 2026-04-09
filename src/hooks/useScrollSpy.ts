@@ -22,7 +22,7 @@ export function useScrollSpy(ids: string[], offset: number = 100) {
       {
         rootMargin: `-${offset}px 0px -70% 0px`,
         threshold: [0, 0.25, 0.5, 0.75, 1],
-      }
+      },
     );
 
     sections.forEach((s) => observer.observe(s));

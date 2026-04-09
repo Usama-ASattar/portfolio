@@ -43,6 +43,11 @@ export const DICTIONARY: Record<LangKey, UIStrings> = {
     email: "Email address",
     message: "Message",
     send: "Send",
+    contactSending: "Sending...",
+    contactSuccess: "Thanks! Your message has been sent.",
+    contactSendError: "Sorry, something went wrong. Please try again.",
+    contactConfigError:
+      "The contact form is not configured. Set EmailJS variables in .env.local (see .env.example).",
 
     allRightsReserved: " All rights reserved",
   },
@@ -89,6 +94,12 @@ export const DICTIONARY: Record<LangKey, UIStrings> = {
     email: "E-Mail-Adresse",
     message: "Nachricht",
     send: "Senden",
+    contactSending: "Wird gesendet...",
+    contactSuccess: "Danke! Deine Nachricht wurde gesendet.",
+    contactSendError:
+      "Entschuldigung, etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    contactConfigError:
+      "Das Kontaktformular ist nicht konfiguriert. Bitte EmailJS-Variablen in .env.local setzen (siehe .env.example).",
 
     allRightsReserved: " Alle Rechte vorbehalten",
   },

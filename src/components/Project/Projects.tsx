@@ -38,8 +38,8 @@ export function Projects({ t, items }: ProjectsProps) {
             className="projects-load-btn"
           >
             {allVisible
-              ? t.showLess ?? "Weniger anzeigen"
-              : t.loadMore ?? "Mehr anzeigen"}
+              ? (t.showLess ?? "Weniger anzeigen")
+              : (t.loadMore ?? "Mehr anzeigen")}
           </button>
         </div>
       )}

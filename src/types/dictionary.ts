@@ -39,6 +39,10 @@ export type UIStrings = {
   email: string;
   message: string;
   send: string;
+  contactSending: string;
+  contactSuccess: string;
+  contactSendError: string;
+  contactConfigError: string;
 
   allRightsReserved: string;
 };

@@ -55,7 +55,7 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
           <div
             className={cn(
               "nav-shell",
-              scrolled ? "nav-shell--raised" : "nav-shell--rest"
+              scrolled ? "nav-shell--raised" : "nav-shell--rest",
             )}
           >
             <a href="#home" className="nav-brand">
@@ -104,7 +104,7 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                     xmlns="http://www.w3.org/2000/svg"
                     className={cn(
                       "nav-lang-chevron",
-                      langOpen && "nav-lang-chevron--open"
+                      langOpen && "nav-lang-chevron--open",
                     )}
                     fill="none"
                     viewBox="0 0 24 24"
@@ -131,7 +131,7 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                         }}
                         className={cn(
                           "nav-lang-item",
-                          lang === "en" && "nav-lang-item--active"
+                          lang === "en" && "nav-lang-item--active",
                         )}
                         role="option"
                         aria-selected={lang === "en"}
@@ -148,7 +148,7 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                         }}
                         className={cn(
                           "nav-lang-item",
-                          lang === "de" && "nav-lang-item--active"
+                          lang === "de" && "nav-lang-item--active",
                         )}
                         role="option"
                         aria-selected={lang === "de"}
@@ -199,7 +199,7 @@ export function Navbar({ t, lang, setLang, currentHash }: NavbarProps) {
                           href={l.href}
                           className={cn(
                             "nav-mobile-link",
-                            active && "nav-mobile-link--active"
+                            active && "nav-mobile-link--active",
                           )}
                         >
                           {t[l.key]}

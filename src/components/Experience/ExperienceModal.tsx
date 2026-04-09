@@ -20,7 +20,7 @@ function getMonthDifference(period: string): number {
 }
 
 const pluralize = (n: number, s: string, p?: string) =>
-  `${n} ${n === 1 ? s : p ?? `${s}s`}`;
+  `${n} ${n === 1 ? s : (p ?? `${s}s`)}`;
 
 export function ExperienceModal({ item, onClose, closeLabel }: ModalProps) {
   useEffect(() => {
@@ -44,22 +44,22 @@ export function ExperienceModal({ item, onClose, closeLabel }: ModalProps) {
   const introParagraphs = Array.isArray(item.company_intro)
     ? item.company_intro
     : item.company_intro
-    ? [item.company_intro]
-    : [];
+      ? [item.company_intro]
+      : [];
 
   const detailSentences: string[] = Array.isArray(item.details)
     ? item.details.flatMap((d) =>
         d
           .split(/(?<=\.)\s+/)
           .map((s) => s.trim())
-          .filter(Boolean)
+          .filter(Boolean),
       )
     : typeof item.details === "string"
-    ? item.details
-        .split(/(?<=\.)\s+/)
-        .map((s) => s.trim())
-        .filter(Boolean)
-    : [];
+      ? item.details
+          .split(/(?<=\.)\s+/)
+          .map((s) => s.trim())
+          .filter(Boolean)
+      : [];
 
   const employmentType = item.work_arrangement ?? "Not specified";
   const mode = item.mode ?? "Not specified";

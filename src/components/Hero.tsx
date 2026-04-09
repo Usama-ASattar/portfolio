@@ -10,11 +10,7 @@ export function Hero({ t }: HeroProps) {
     <section id="home" className="hero">
       <div className="hero__layout">
         <div className="hero__media-col">
-          <img
-            src={heroPhoto}
-            alt="Developer portrait"
-            className="hero__img"
-          />
+          <img src={heroPhoto} alt="Developer portrait" className="hero__img" />
         </div>
 
         <div className="hero__content">

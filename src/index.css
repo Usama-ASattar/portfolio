@@ -7,8 +7,9 @@
 /* -------------------------------------------------------------------------- */
 @layer base {
   :root {
-    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --font-sans:
+      ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 
     --background: 0 0% 100%;
     --foreground: 0 0% 9%;
@@ -743,11 +744,23 @@
   .dark .technologies__icon--express {
     color: #ffffff;
   }
+  .technologies__icon--python {
+    color: #3776ab;
+  }
+  .technologies__icon--fastapi {
+    color: #009688;
+  }
+  .technologies__icon--sqlalchemy {
+    color: #d71f00;
+  }
   .technologies__icon--mongo {
     color: #47a248;
   }
   .technologies__icon--sql {
     color: #4479a1;
+  }
+  .technologies__icon--postgresql {
+    color: #336791;
   }
   .technologies__icon--docker {
     color: #2496ed;
@@ -946,5 +959,22 @@
 
   .modal-meta-label {
     @apply font-medium;
+  }
+
+  /* —— Error boundary (global fallback UI) —— */
+  .error-boundary {
+    @apply flex min-h-screen flex-col items-center justify-center gap-4 bg-background px-6 py-16 text-center text-foreground;
+  }
+
+  .error-boundary__title {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  .error-boundary__text {
+    @apply max-w-md text-sm text-muted-foreground;
+  }
+
+  .error-boundary__retry {
+    @apply rounded-full border border-border bg-background px-5 py-2 text-sm font-medium text-foreground transition hover:bg-accent;
   }
 }

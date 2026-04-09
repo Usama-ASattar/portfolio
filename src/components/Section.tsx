@@ -22,9 +22,7 @@ export function Section({
         {title && (
           <header className="app-section__header">
             <h2 className="app-section__title">{title}</h2>
-            {subtitle && (
-              <p className="app-section__subtitle">{subtitle}</p>
-            )}
+            {subtitle && <p className="app-section__subtitle">{subtitle}</p>}
           </header>
         )}
         {children}

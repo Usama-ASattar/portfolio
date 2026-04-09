@@ -10,7 +10,15 @@ export const experienceItems: Record<LangKey, ExperinceItem[]> = {
       period: "12/2022 - 01/2024",
       work_arrangement: "Working Student",
       mode: "Hybrid",
-      tech: ["React.js", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "GitHub Actions"],
+      tech: [
+        "React.js",
+        "Python",
+        "FastAPI",
+        "PostgreSQL",
+        "SQLAlchemy",
+        "Docker",
+        "GitHub Actions",
+      ],
       points: paragraphToArray(`
 Developed and maintained the university's internal Research Collaboration Platform.
 Delivered end-to-end features such as a communities interface and a reactions system backed by PostgreSQL.
@@ -102,7 +110,15 @@ Participated in regular code reviews to maintain high development standards and 
       period: "12/2022 - 01/2024",
       work_arrangement: "Werkstudent",
       mode: "Hybrid",
-      tech: ["React.js", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "GitHub Actions"],
+      tech: [
+        "React.js",
+        "Python",
+        "FastAPI",
+        "PostgreSQL",
+        "SQLAlchemy",
+        "Docker",
+        "GitHub Actions",
+      ],
       points: paragraphToArray(`
 Entwicklung und Wartung der internen Forschungs-Kooperationsplattform der Universität.
 Bereitstellung von End-to-End-Funktionen wie einer Community-Oberfläche und einem Reaktionssystem auf Basis von PostgreSQL.
